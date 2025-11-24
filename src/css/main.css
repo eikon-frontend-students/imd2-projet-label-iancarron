@@ -17,4 +17,130 @@ body {
   background: black;
   color: white;
   font-family: "Avenir Next", sans-serif;
+  overflow-x: hidden;
+}
+
+.background-video {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.insta-post {
+  position: relative;
+}
+
+.insta-post img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.insta-post i {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 1.4rem;
+  color: white;
+  opacity: 0.9;
+}
+
+.landing-page {
+  width: 100vw;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/video.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo img {
+  display: flex;
+  width: 176px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  aspect-ratio: 88/35;
+}
+
+.title h1 {
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 27.9px #fff;
+  font-size: 30vw;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: -18.44px;
+}
+
+.title h2 {
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.7);
+  font-size: 100px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.title h3 {
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.scroll {
+  width: 71px;
+  color: white;
+  text-align: center;
+  font-family: "Font Awesome 7 Free";
+  font-size: 80px;
+  font-weight: 900;
+  filter: drop-shadow(0 0 var(--Neon-blur-16, 16px) #fff);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+.typo-composition a {
+  display: inline-flex;
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 32px;
+  border: 1px solid #fff;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: none;
 }
