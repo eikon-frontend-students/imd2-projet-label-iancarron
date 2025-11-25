@@ -1,3 +1,6 @@
+/* ------------------------------ */
+/* RESET + BASE */
+/* ------------------------------ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,6 +9,7 @@
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 img,
@@ -20,23 +24,201 @@ body {
   overflow-x: hidden;
 }
 
-.background-video {
+/* ------------------------------ */
+/* BACKGROUND IMAGE / VIDEO */
+/* ------------------------------ */
+.background-video,
+.landing-page {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
-.background-video img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.background-video img,
+.landing-page {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
 }
 
+.landing-page {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("../img/video.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ------------------------------ */
+/* LOGO */
+/* ------------------------------ */
+.logo {
+  position: fixed; /* FIXE au lieu d'absolu */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.logo img {
+  width: 125px;
+  height: auto;
+}
+
+/* ------------------------------ */
+/* TITRE PRINCIPAL */
+/* ------------------------------ */
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: -150px;
+  pointer-events: none; /* titre ne bloque pas les clics */
+  position: relative; /* pour que scroll soit au-dessus */
+  z-index: 10;
+}
+
+.title h1 {
+  font-size: 30vw;
+  font-weight: 900;
+  letter-spacing: -18.44px;
+  text-shadow: 0 0 28px #fff;
+  margin: 0;
+  pointer-events: none;
+}
+
+.title h2 {
+  margin-top: -150px;
+  font-size: 100px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.title h3 {
+  margin-top: -20px;
+  font-size: 32px;
+  font-weight: 400;
+  pointer-events: none;
+}
+
+/* ------------------------------ */
+/* NAVIGATION BOUTONS (GLOW) */
+/* ------------------------------ */
+.typo-composition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.typo-composition nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 140px 0 10px;
+  position: relative;
+  z-index: 60;
+}
+
+.nav-group {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+/* BOUTONS */
+.typo-composition a {
+  margin: 8px 14px;
+  padding: 12px 28px;
+  border-radius: 32px;
+  border: 2px solid white;
+  background: rgba(0, 0, 0, 0.3); /* noir semi-transparent */
+  letter-spacing: 1px;
+  font-size: 18px;
+  font-weight: 400;
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.6),
+    inset 0 0 24px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.7),
+    0 0 24px rgba(255, 255, 255, 0.5);
+  transition: 0.3s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 70;
+}
+
+.typo-composition a:hover {
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 1),
+    inset 0 0 36px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 1),
+    0 0 42px rgba(255, 255, 255, 0.95), 0 0 60px rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* ------------------------------ */
+/* SCROLL ICON */
+/* ------------------------------ */
+.scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 40px; /* ajuste pour descendre ou monter */
+  transform: translateX(-50%);
+  width: 71px;
+  height: 120px;
+  font-family: "Font Awesome 7 Free";
+  font-size: 80px;
+  font-weight: 900;
+  cursor: pointer;
+  z-index: 100; /* plus haut que le fond */
+}
+
+.scroll i {
+  position: absolute;
+  transform: translateX(-50%);
+  animation: floatY 1.5s ease-in-out infinite;
+}
+
+/* première flèche en haut */
+.scroll i:first-child {
+  top: 0;
+}
+
+/* deuxième flèche presque superposée */
+.scroll i:last-child {
+  top: 50px; /* réduit encore pour quasi superposition */
+}
+
+/* animation de haut en bas */
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------ */
+/* GRID INSTAGRAM */
+/* ------------------------------ */
 .insta-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -62,85 +244,27 @@ body {
   bottom: 8px;
   right: 8px;
   font-size: 1.4rem;
-  color: white;
   opacity: 0.9;
 }
 
-.landing-page {
-  width: 100vw;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url("../img/video.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* ------------------------------ */
+/* SECTION ARTISTES */
+/* ------------------------------ */
+.artistes {
+  margin-top: 200px;
 }
 
-.logo img {
-  display: flex;
-  width: 176px;
-  height: 70px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  aspect-ratio: 88/35;
-}
-
-.title h1 {
-  color: white;
-  text-align: center;
-  text-shadow: 0 0 27.9px #fff;
-  font-size: 30vw;
-  font-style: normal;
-  font-weight: 900;
-  letter-spacing: -18.44px;
-}
-
-.title h2 {
-  color: white;
-  text-align: center;
-  text-shadow: 0 0 24px rgba(255, 255, 255, 0.7);
-  font-size: 100px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.title h3 {
-  color: white;
-  text-align: center;
-  font-size: 32px;
-  font-weight: 400;
-}
-
-.scroll {
-  width: 71px;
-  color: white;
-  text-align: center;
-  font-family: "Font Awesome 7 Free";
-  font-size: 80px;
-  font-weight: 900;
-  filter: drop-shadow(0 0 var(--Neon-blur-16, 16px) #fff);
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
-}
-
-.typo-composition a {
-  display: inline-flex;
-  padding: 10px 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 32px;
-  border: 1px solid #fff;
-  color: white;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
-  text-decoration: none;
+/* Style de la nav sticky */
+.typo-composition nav.sticky {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9); /* léger fond pour visibilité */
+  padding: 10px 0;
+  z-index: 100;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
