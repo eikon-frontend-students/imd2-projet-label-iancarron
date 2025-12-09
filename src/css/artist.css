@@ -1,0 +1,488 @@
+/* ------------------------------ */
+/* RESET / BASE */
+/* ------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: "Avenir Next", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ------------------------------ */
+/* HEADER STICKY / LOGO CENTRÉ */
+/* ------------------------------ */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  /* Gradient noir → transparent sur les 2/3 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* gauche / logo / droite */
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 120px;
+  margin-top: 30px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 60px; /* plus d'espacement */
+  align-items: center;
+}
+
+.nav-left {
+  justify-content: flex-end;
+}
+
+.nav-right {
+  justify-content: flex-start;
+}
+
+/* ------------------------------ */
+/* LIENS NÉON BLANCS */
+/* ------------------------------ */
+.nav-links a:not(.logo) {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 12px 28px;
+  border-radius: 32px;
+  border: 2px solid white;
+  background: rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.6),
+    inset 0 0 24px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.7),
+    0 0 24px rgba(255, 255, 255, 0.5);
+  transition: 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover néon blanc puissant comme homepage */
+.nav-links a:not(.logo):hover {
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 1),
+    inset 0 0 36px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 1),
+    0 0 42px rgba(255, 255, 255, 0.95), 0 0 60px rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* ------------------------------ */
+/* LOGO SANS STROKE */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 125px;
+  height: auto;
+  display: block;
+  box-shadow: none;
+  border: none;
+}
+
+/* ------------------------------ */
+/* TITRE PRINCIPAL */
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  margin-top: -50px;
+}
+
+.title h1 {
+  font-size: 20vw;
+  font-weight: 900;
+  text-shadow: 0 0 28px #fff;
+}
+
+/* ------------------------------ */
+/* IMAGE DE L’ARTISTE */
+.img-artist {
+  width: 60%;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  overflow: hidden;
+}
+
+.img-artist img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%) contrast(120%) brightness(110%);
+}
+
+.img-artist:hover img {
+  filter: grayscale(0%) contrast(120%) brightness(100%);
+  transform: scale(1.05);
+}
+
+/* ------------------------------ */
+/* DESCRIPTION ARTISTE */
+.description {
+  width: 70%;
+  max-width: 1000px;
+  margin: 0 auto 100px;
+}
+
+.description h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* ------------------------------ */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .img-artist {
+    width: 80%;
+  }
+  .description {
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-left,
+  .nav-right {
+    gap: 30px;
+  }
+  .title h1 {
+    font-size: 15vw;
+  }
+  .img-artist {
+    width: 90%;
+  }
+  .description {
+    width: 90%;
+    padding: 0 20px;
+  }
+}
+
+/* Conteneur image + description côte à côte */
+.artist-info {
+  display: flex;
+  justify-content: center; /* centre le bloc dans la page */
+  align-items: flex-start; /* alignement en haut */
+  gap: 50px; /* espace entre image et description */
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto 50;
+  margin-top: -70px;
+}
+
+/* Image de l'artiste à gauche */
+.img-artist {
+  flex: 2; /* prend 1 partie de l'espace */
+  max-width: 700px;
+}
+
+/* Description à droite */
+.description {
+  flex: 2; /* prend 2 parties de l'espace */
+}
+
+.description h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: justify;
+}
+
+/* ------------------------------ */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .artist-info {
+    flex-direction: column; /* empile image + texte sur tablette */
+    align-items: center;
+  }
+  .img-artist,
+  .description {
+    max-width: 90%;
+  }
+}
+
+/* ------------------------------ */
+/* FOOTER */
+/* ------------------------------ */
+footer {
+  background: linear-gradient(to bottom, #111 0%, #000 100%);
+  color: #fff;
+  padding: 60px 100px 40px;
+  font-family: "Avenir Next", sans-serif;
+  margin-top: 100px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 550px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  padding-left: 200px;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.footer-socials a {
+  font-size: 24px;
+  margin-right: 12px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.footer-socials a:hover {
+  text-shadow: 0 0 12px #fff, 0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+.footer-right nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-right nav a:hover {
+  text-shadow: 0 0 12px #fff, 0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* ------------------------------ */
+/* SONG CARDS */
+.songs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 70px;
+  margin: 0 auto 100px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.song {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 220px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song img {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  filter: grayscale(100%) brightness(120%);
+}
+
+.song h3 {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Hover effects */
+.song:hover img {
+  filter: grayscale(0%) brightness(100%);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+.song:hover h3 {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9),
+    0 0 24px rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .song {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .songs {
+    gap: 20px;
+  }
+  .song {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .song {
+    width: 90%;
+  }
+}
+
+.title-songs h2 {
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 275;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.title-concerts h2 {
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 275;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* ------------------------------ */
+/* CONCERT CARDS */
+.concerts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+}
+
+.event {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px 20px;
+  width: 280px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 15px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3);
+}
+
+.event:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3);
+}
+
+.event h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.event h5 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.tickets h6 {
+  margin-top: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid white;
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.6),
+    inset 0 0 24px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.7),
+    0 0 24px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+}
+
+.tickets h6:hover {
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 1),
+    inset 0 0 36px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 1),
+    0 0 42px rgba(255, 255, 255, 0.95), 0 0 60px rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* ------------------------------ */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .event {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .event {
+    width: 90%;
+  }
+}
+
+/* ------------------------------ */
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+    gap: 30px;
+  }
+
+  .footer-right nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
